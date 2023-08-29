@@ -96,3 +96,114 @@ WHERE num_years >= 5
 AND satisfaction >= 0.8
 ORDER BY last_name;
 
+
+---------------------------------------------------------------------------------------------------------------
+Objectif:
+
+Modifier la requête pour sélectionner uniquement le (ou les) produit(s) (product) ayant la plus grande quantité disponible (available_stock).
+N'afficher que les colonnes PRODUCT_ID, NAME et AVAILABLE_STOCK dans cet ordre. Exemple de sortie :
+----------------------------------------------------
+| PRODUCT_ID | NAME              | AVAILABLE_STOCK |
+----------------------------------------------------
+| 11         | X608GT - ALLSTAR  | 8765            |
+| 15         | L6095T            | 8765            |
+----------------------------------------------------
+
+
+Reponse:
+-- SQL request(s) below
+ SELECT product.PRODUCT_ID , product.NAME, product.AVAILABLE_STOCK
+  FROM product
+  ORDER BY product.AVAILABLE_STOCK DESC LIMIT 2
+
+
+---------------------------------------------------------------------------------------------------------------
+
+  Objectif
+  Rédigez une requête qui renvoie tous les étudiants dont la note moyenne aux tests de sciences humaines ( avg_score ) est supérieure ou égale à 0,9. Un test de sciences humaines a un test_name égal à 'English Test' ou 'History Test'. Conditions
+  Colonnes attendues : first_name , last_name , avg_score , dans cet ordre. Arrondissez le score moyen pour ne conserver que deux décimales. Trier les lignes par score moyen (non arrondi), dans l'ordre décroissant. Exemple :
+  --------------------------------------
+  | FIRST_NAME | LAST_NAME | AVG_SCORE |
+  --------------------------------------
+              | Joann
+  | Teddy
+  | Rebecca
+  --------------------------------------
+
+  Reponse:
+  SELECT
+      first_name,
+      last_name,
+      ROUND(avg_score, 2) AS avg_score
+  FROM
+      students
+  WHERE
+      test_name IN ('English Test', 'History Test')
+  GROUP BY
+      first_name, last_name, avg_score
+  HAVING
+      AVG(avg_score) >= 0.9
+  ORDER BY
+      AVG(avg_score) DESC;
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+Rédigez une requête qui renvoie les meilleurs joueurs de basketball. Nous définissons les meilleurs joueurs de basketball comme les personnes dont le ppg est supérieur ou égal à 20,0, le rpg et le apg sont tout deux supérieurs ou égaux à 5,0, et le games_played supérieur ou égal à 65. Conditions Colonnes attendues : first_name , last_name , dans cet ordre.
+Trier les lignes par last_name puis par first_name dans l'ordre alphabétique. Exemple :
+
+---------------------------
+| FIRST_NAME | LAST_NAME  |
+---------------------------
+| James
+| LeBron
+| Russell
+---------------------------
+
+Reponse:
+SELECT
+    first_name,
+    last_name
+FROM
+    basketball_players
+WHERE
+    ppg >= 20.0
+    AND rpg >= 5.0
+    AND apg >= 5.0
+    AND games_played >= 65
+ORDER BY
+    last_name, first_name;
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+Objectif
+Pour chaque employé, renvoyer un code contenant les éléments suivants séparés par un - :
+La première lettre de first_name ainsi que la première et la dernière lettre de last_name , en majuscules.
+satisfaction (en ne gardant que deux chiffres après la virgule). Le caractère "x " si l'ancienneté de l'employé ( num_years ) est supérieure ou égale à 3 ans. Exigences Colonne attendue :
+employee_code . Triez les lignes par ordre décroissant de satisfaction . Exemple:
+-----------------
+| employee_code |
+-----------------
+| BHS-0.99-x    |
+| TAL-0.98      |
+| JMY-0.97-x    |
+-----------------
+
+reponse:
+SELECT
+    CONCAT(
+        UPPER(SUBSTRING(first_name, 1, 1)),
+        UPPER(SUBSTRING(last_name, 1, 1)),
+        UPPER(SUBSTRING(last_name, -1, 1)),
+        '-',
+        ROUND(satisfaction, 2),
+        CASE WHEN num_years >= 3 THEN '-x ' ELSE '' END
+    ) AS employee_code
+FROM
+    employees
+ORDER BY
+    satisfaction DESC;

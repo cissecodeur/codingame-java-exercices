@@ -3,7 +3,8 @@ import java.util.List;
 public class MaxProfits {
 
      /*
-     Objectif Dans cette tâche, on vous donne une liste d'entiers, qui représentent les bénéfices nets mensuels d'une entreprise. L'entreprise souhaite que vous trouviez la plage de mois consécutifs qui a enregistré le plus de bénéfices.
+     Objectif Dans cette tâche, on vous donne une liste d'entiers, qui représentent les bénéfices nets mensuels d'une entreprise.
+     L'entreprise souhaite que vous trouviez la plage de mois consécutifs qui a enregistré le plus de bénéfices.
 Implémentation
 Fonction
 Implémenter la méthode maxProfit. Paramètres
