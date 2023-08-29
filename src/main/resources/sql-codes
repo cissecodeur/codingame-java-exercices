@@ -1,0 +1,98 @@
+
+====================================================================================================== SQL EXERCICES ================================================================================================
+
+
+Objectif :
+Certains pièces de véhicules ( vehicle_part ) n'ont pas la même marque ( make ), modèle ( model ) ou année ( year ) que le véhicule correspondant.
+Cette inexactitude est rendue possible par l'absence de clé étrangère entre les table vehicle et vehicle_part sur le triplet make,model,year .
+Extraire les pièces qui sont dans ce cas de figure (non correspondance des marque, modèle ou année). Conditions
+Colonnes attendues : vin , rfid , part_name dans cet ordre.
+
+
+Réponse:
+SELECT VIN,RFID,PART_NAME
+FROM   PART_VEHICLE
+WHERE  (make,model,year) NOT IN ( SELECT make,model,year FROM   VEHICLE)
+
+----------------------------------------------------------------------------------------------------------------
+
+Objectif :
+Extraire les véhicules ( vehicle ) n'ayant aucune pièce ( vehicle_part ) associée.
+Conditions
+Colonne attendue : vehicle_id .
+vehicle_part a un champ vehicle_id et vehicle a pour cle primaire vehicle_id
+Ecris une requete sql
+
+
+SELECT v.vehicle_id
+FROM vehicle v
+LEFT JOIN vehicle_part vp ON v.vehicle_id = vp.vehicle_id
+WHERE vp.vehicle_id IS NULL;
+
+--------------------------------------------------------------------------------------------------------------
+
+Objectif:
+Extraire les joueurs ayant obtenu un total de 1600 points ou plus. Notez que le total de points d'un
+joueur est égal aux jeux joués ( games_played ) multipliés par ppg , arrondi au nombre entier le plus
+proche.   Conditions
+Colonnes attendues : first_name , last_name , total , dans cet ordre. Trier les lignes par
+last_name , dans l'ordre alphabétique.  Exemple :
+-----------------------------------
+| FIRST_NAME | LAST_NAME | TOTAL |
+-----------------------------------
+| DeMarcus | Cousins | 1749 |
+| Stephen | Curry | 2378 |
+| Andrew | Wiggins | 1677 |
+
+
+Réponse:
+
+SELECT first_name, last_name, ROUND(games_played * ppg) AS total
+FROM players
+WHERE ROUND(games_played * ppg) >= 1600
+ORDER BY last_name ASC;
+
+
+---------------------------------------------------------------------------------------------------------------
+
+Objectif :
+Extraire les emplacements de pièces de véhicule ( vehicle_part_location ) pour lesquels
+location_id est égal à 3, 6, ou 12 et ayant une date de sortie ( left_timestamp ) définie. Conditions
+Colonnes attendues : vehicle_part_id , arrived_timestamp , dans cet ordre. Exemple :
+-------------------------------------------------
+| VEHICLE_PART_ID | ARRIVED_TIMESTAMP           |
+-------------------------------------------------
+          | 4
+| 6
+| 7
+-------------------------------------------------
+
+
+Réponse:
+SELECT vehicle_part_id , arrived_timestamp
+FROM vehicle_part_location
+WHERE location_id IN (3,6,12)
+AND arrived_timestamp IS NOT NULL;
+
+---------------------------------------------------------------------------------------------------------------
+
+Objectif :
+Rédigez une requête qui renvoie les employés qui sont dans l'entreprise depuis au moins 5 ans (
+num_years supérieur ou égal à 5) et qui ont un niveau de satisfaction d'au moins 0,8 ( satisfaction supérieur ou égal à 0,8). Conditions
+Colonnes attendues : first_name , last_name , satisfaction , dans cet ordre. Trier les lignes par
+last_name , dans l'ordre alphabétique. Exemple :
+-------------------------------------------
+| FIRST_NAME  | LAST_NAME  | SATISFACTION |
+-------------------------------------------
+              | Kent
+| Tony
+| James
+-------------------------------------------
+
+Réponse:
+SELECT first_name , last_name , satisfaction
+FROM employee
+WHERE num_years >= 5
+AND satisfaction >= 0.8
+ORDER BY last_name;
+

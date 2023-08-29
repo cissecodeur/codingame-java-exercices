@@ -10,12 +10,13 @@ public class ComputeMultiplesSum {
             0 # n < 1000
    */
     public static int computeMultiplesSum(int n) {
-        if (n <= 0 || n >= 1000) {
-         //   throw new IllegalArgumentException("La valeur de n doit etre comprise entre 1 et 999");
-            return 0;
-        }
 
         int sum = 0;
+        if (n <= 0 || n >= 1000) {
+         //   throw new IllegalArgumentException("La valeur de n doit etre comprise entre 1 et 999");
+            return sum;
+        }
+
         for (int i = 1; i < n; i++) {
 
             if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
