@@ -207,3 +207,57 @@ FROM
     employees
 ORDER BY
     satisfaction DESC;
+
+
+____________________________________________________________________________
+Objectif
+Rédigez une requête qui renvoie tous les clients qui ont passé au moins une commande de cheeseburger ( purchase égal à "Cheeseburger"). Conditions
+Colonnes attendues : id , first_name , last_name , dans cet ordre. Trier les lignes par id , dans l'ordre croissant. Ne pas afficher de doublons. Exemple :
+      -------------------------------
+| ID | FIRST_NAME | LAST_NAME |
+-------------------------------
+| 2  | Tonia
+| 11 | Jack
+| 20 | Kim
+-------------------------------
+| Jordan    |
+| Street    |
+| Ponders   |
+
+
+Reponse:
+SELECT DISTINCT id, first_name, last_name
+FROM customers
+WHERE id IN (
+    SELECT customer_id
+    FROM orders
+    WHERE purchase = 'Cheeseburger'
+)
+ORDER BY id;
+
+____________________________________________________________________________
+Objectif
+Calculer le nombre de pièces ( vehicle_part ) par véhicule ( vin ).
+Conditions
+Colonnes attendues : vin , vehicle_part_count , dans cet ordre. Ne pas afficher les véhicules ne possédant aucune pièce.
+ Exemple :
+------------------------------------------
+| VIN               | VEHICLE_PART_COUNT |
+------------------------------------------
+| 1B3ES66S63D169269 | 3                  |
+| JH4KA7630MC005945 | 2                  |
+| JH4KA7570PC005842 | 8                  |
+------------------------------------------
+
+
+Reponse:
+SELECT v.vin, COUNT(vp.vehicle_id) AS vehicle_part_count
+        FROM vehicle v
+        LEFT JOIN vehicle_part vp ON v.vin = vp.vehicle_id
+        GROUP BY v.vin
+        HAVING COUNT(vp.vehicle_id) > 0
+        ORDER BY v.vin;
+
+
+
+
