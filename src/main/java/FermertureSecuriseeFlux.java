@@ -24,4 +24,17 @@ public class FermertureSecuriseeFlux {
             e.printStackTrace();
         }
     }
+
+
+    void printGoodVersion(Reader reader) throws IOException {
+        try (BufferedReader br = new BufferedReader(reader)) {
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            System.out.print(sb.toString());
+        }
+    }
+
 }

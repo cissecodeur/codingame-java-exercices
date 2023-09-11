@@ -260,4 +260,73 @@ SELECT v.vin, COUNT(vp.vehicle_id) AS vehicle_part_count
 
 
 
+____________________________________________________________________________
+Objectif :
+Pour tous les produits, calculer la valeur unitaire ( value / available_stock ) sous forme de nombre décimal.
+Exigences Colonnes attendues : product_id , unit_value , dans cet ordre.
+unit_value doit être arrondi à deux décimales près.
+Les zéros de fin ne doivent pas être écrits. Par exemple, si la valeur initiale est 1.698, la valeur écrite doit être "1.7" et non "1.70".
+S'il n'y a pas de stock, renvoyez la valeur nulle.
+Triez les lignes par ordre décroissant de unit_value , puis par ordre croissant de product_id .
+
+
+Reponse:
+
+SELECT
+  product_id,
+  CASE
+    WHEN available_stock = 0 THEN NULL
+    ELSE ROUND(value / available_stock, 1) -- Arrondi à une décimale
+  END AS unit_value
+FROM products
+ORDER BY
+  CASE
+    WHEN available_stock = 0 THEN 1 -- Mettre en dernier les produits sans stock
+    ELSE 0
+  END,
+  unit_value DESC, -- Tri décroissant par unit_value
+  product_id ASC;   -- Tri croissant par product_id
+
+
+
+
+  ____________________________________________________________________________
+  Objectif :
+   Modifier la requête pour lister tous les produits (product) et leur catégorie associée (product_category) s'ils en ont une.
+   Dans le cas contraire, ne pas afficher de valeur (null sera affiché par défaut) pour la catégorie.
+   N'afficher que les colonnes PRODUCT_NAME et CATEGORY_NAME dans cet ordre.
+
+reponse :
+
+  SELECT
+      product.NAME,
+      product_category.NAME
+  FROM
+      product
+  LEFT OUTER JOIN
+      product_category ON product.PRODUCT_CATEGORY_ID = product_category.PRODUCT_CATEGORY_ID;
+
+
+
+  ____________________________________________________________________________________
+
+  Objectif
+  Extraire les joueurs ayant obtenu un total de 1600 points ou plus. Notez que le total de points d'un joueur est égal aux jeux joués ( games_played ) multipliés par ppg , arrondi au nombre entier le plus proche. Conditions
+  Colonnes attendues : first_name , last_name , total , dans cet ordre. Trier les lignes par
+  last_name , dans l'ordre alphabétique.
+
+
+      SELECT
+          first_name,
+          last_name,
+          CAST(ROUND(games_played * ppg) AS INT) AS total
+      FROM
+          players
+      HAVING
+          total >= 1600
+      ORDER BY
+          last_name;
+
+
+
 
