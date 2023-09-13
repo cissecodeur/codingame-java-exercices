@@ -25,14 +25,6 @@ Votre programme indique une action invalide ou fausse.
     public static String solve(int width, int height, int length,int mass) {
         int volume = width*height*length;
 
-        if((10 >= mass) || (mass >= 1000)){
-           return "La masse doit etre comprise entre 10 et 1000 kg" ;
-        }
-
-        if((20 >= width) || (width >= 200) || (20 >= height) || (height >= 200) || (20 >= length) || (length >= 200)){
-            return "Les dimensions doivent etre entre 20 et 200 cm" ;
-        }
-
         if((mass>= 20) && (volume >= 1_000_000_000 || width >= 150 || height >= 150  || length >= 150)){
             return "REJECTED";
         }

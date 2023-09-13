@@ -14,9 +14,11 @@ Essayez d'optimiser votre solution pour que, dans l'idéal, la durée de traitem
      */
 
     public static int nombrePaires(int n){
+        int nombrePaire = 0 ;
         if(n < 2){
-            return 0; //Pas assez de joueurs pour former une paire
+            return nombrePaire; //Pas assez de joueurs pour former une paire
         }
-        return (n*(n-1))/2;
+        nombrePaire = (n*(n-1))/2;
+        return  nombrePaire;
     }
 }
