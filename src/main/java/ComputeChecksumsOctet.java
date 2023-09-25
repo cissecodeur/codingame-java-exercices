@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class computeChecksumsOctet {
+public class ComputeChecksumsOctet {
 
     /*  Sujet :
        Objectif

@@ -14,24 +14,19 @@ de caractères de  number .
 On a  1 <= number <= 100 .
      */
 
-        public static String fizzBuzz(int number, Map<Integer, String> map) {
-            StringBuilder result = new StringBuilder();
+    public static String fizzBuzz(int number, Map<Integer, String> map) {
+        // Créer une chaîne vide pour stocker le résultat
+        StringBuilder result = new StringBuilder();
 
-            for (int i = 1; i <= number; i++) {
-                for (Map.Entry<Integer, String> entry : map.entrySet()) {
-                    int divisor = entry.getKey();
-                    String value = entry.getValue();
-
-                    if (i % divisor == 0) {
-                        result.append(value);
-                    }
-                }
-                if (result.length() == 0) {
-                    result.append(Integer.toString(i));
-                }
-                result.append(" ");
+        // Parcourir tous les diviseurs de number
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                // Ajouter la valeur associée à i à la chaîne
+                result.append(map.get(i));
             }
-
-            return result.toString().trim();
         }
+
+        // Retourner la chaîne
+        return result.toString();
+    }
 }
