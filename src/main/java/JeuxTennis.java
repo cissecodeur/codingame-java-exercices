@@ -39,11 +39,11 @@ P1 0 - P2 0 (les joueurs dans l'ordre des paramètres) P1 15 - P2 30 15a (en cas
             return nameP1 + " WINS";
         } else if (scoreP2 >= 4 && scoreP2 >= scoreP1 + 2) {
             return nameP2 + " WINS";
-        } else if (scoreP1 >= 3 && scoreP2 >= 3 && scoreP1 == scoreP2) {
+        } else if (scoreP2 >= 3 && scoreP1 == scoreP2) {
             return "DEUCE";
         } else if (scoreP1 >= 3 && scoreP1 > scoreP2) {
             return "ADVANTAGE " + nameP1;
-        } else if (scoreP2 >= 3 && scoreP2 > scoreP1) {
+        } else if (scoreP2 >= 3) {
             return "ADVANTAGE " + nameP2;
         }
 
