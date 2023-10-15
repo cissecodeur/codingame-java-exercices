@@ -1,7 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
-public class SommeDepaires {
 
     /*  Sujet :Question
 Objectif
@@ -21,21 +17,35 @@ Pour l'exemple ci-dessus, la sortie correcte serait : [1, 2] .
 
 
 
-     // les nombres sont stockés dans la map et leur valeurs seront les index
     public static int[] findSumPair(int[] numbers, int k) {
-        Map<Integer, Integer> mapTemp = new HashMap<>();  // HashMap pour stocker les indices des numéros déjà parcourus
+        Map<Integer, Integer> numToIndex = new HashMap<>();  // HashMap pour stocker les indices des numéros déjà parcourus
 
         for (int i = 0; i < numbers.length; i++) {
-            int complement = k - numbers[i];  // Le complément nécessaire pour obtenir la somme k
+            int num = numbers[i];
+            int complement = k - num;  // Le complément nécessaire pour obtenir la somme k
 
-            if (mapTemp.containsKey(complement)) {
-                return new int[]{mapTemp.get(complement), i};  // On a trouvé une paire dont la somme est k
+            if (numToIndex.containsKey(complement)) {
+                return new int[]{numToIndex.get(complement), i};  // On a trouvé une paire dont la somme est k
             } else {
-                mapTemp.put(numbers[i], i);  // Stocke l'indice du numéro actuel
+                numToIndex.put(num, i);  // Stocke l'indice du numéro actuel
             }
         }
 
         return new int[]{0, 0};  // Aucune paire trouvée, on retourne {0, 0}
     }
 
+}
+
+const findSumPair = (numbers,k) =>{
+       var mapTemp = new Map();
+       var result = [];
+       for(let i=0 ; i < numbers.length;i++){
+            let complement = k - numbers[i];
+            if(mapTemp.has(complement)){// Utilisation de has pour vérifier si la clé existe
+                  return [mapTemp.get(complement),i];
+            }else{
+             mapTemp.set(numbers[i],i)
+            }
+       }
+     return [0,0];
 }

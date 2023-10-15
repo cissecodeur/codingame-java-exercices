@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class AsciiArt {
 
     /*  Sujet :Question
 Objectif
@@ -10,26 +6,19 @@ Maintenant, on souhaite faire l'opération dans l'autre sens : obtenir un caract
 Implémentez la méthode scanChar(String s) afin qu'elle retourne le caractère associé à la représentation graphique fournie par AsciiArt.printChar(char c) .
 Si s ne correspond pas à un caractère entre A et Z (inclusif), alors scanChar devra retourner le caractère ? .
    */
-   public static char scanChar(String s){
 
-       for(char c ='A' ; c <= 'Z'; c++){
-           String charRepresentation = AsciiArt.printChar(c);
-           if(charRepresentation.equalsIgnoreCase(s)){
-               return c;
-           }
-       }
-       return '?';
-    }
-
-
-    private static String printChar(char c) {
-       return "c";
-    }
-
-
-
-    }
+ const scanChar = (s) => {
+                for(let i = 'A'.charCodeAt(0); i <= 'Z'.charCodeAt(0); i++) {
+                    let c = String.fromCharCode(i);
+                    let charRepresentation = AsciiArt.printChar(c);
+                    if(charRepresentation === s) {
+                        return c;
+                    }
+                }
+             return '?';
+          }
 
 
 
 
+}

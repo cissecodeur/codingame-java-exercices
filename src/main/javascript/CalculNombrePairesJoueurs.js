@@ -1,5 +1,3 @@
-public class CalculNombrePairesJoueurs {
-
 
     /*
     Question
@@ -13,15 +11,14 @@ Essayez d'optimiser votre solution pour que, dans l'idéal, la durée de traitem
 
      */
 
-    public static int nombrePaires(int n){
-        int nombrePaire = 0 ;
-        if(n < 2){
-            return nombrePaire; //Pas assez de joueurs pour former une paire
-        }
+ const nombrePaires = (n) =>{
+         var nombrePaire = 0;
+         if(n<2){
+             return nombrePaire;
+         }
         nombrePaire = (n*(n-1))/2;
-        return  nombrePaire;
+         return nombrePaire;
     }
-
 
 
 }

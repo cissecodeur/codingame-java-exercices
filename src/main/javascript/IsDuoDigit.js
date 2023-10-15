@@ -15,20 +15,23 @@ public class DuoDigit {
         Implémentez la méthode isDuoDigit(number) qui renvoie un string: y si number est un duodigt n dans le cas contraire
      */
 
+    const isDuoDigit = (number) =>{
+         let temps = [];
+         let numberAbs = Math.abs(number).toString();
+         let count = 0;
+         for(let i=0;i<numberAbs.length;i++){
+             if(temps.includes(numberAbs.charAt(i))){
+                 if(temps.length > 2){
+                      return "n"
+               }
+           }
+           else{
+               temps.push(numberAbs.charAt(i)) ;
 
-    public static String isDuoDigit(int number) {
-        String numberToString = String.valueOf(Math.abs(number));
-        Set<Character> setTemp = new HashSet<>();
+           }
+         }
 
-        for(int i = 0 ; i<numberToString.length();i++){
-               Character character = numberToString.charAt(i);
-               setTemp.add(character);
-        }
-        if (setTemp.size() <= 2){
-            return "y";
-        }
-
-        return "n";
+         return "y" ;
     }
 
  }

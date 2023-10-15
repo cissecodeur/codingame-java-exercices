@@ -1,7 +1,7 @@
 public class JeuxTennis {
 
     /*
-    Écrire un programme retournant l'état d'un jeu de tennis.
+     Écrire un programme retournant l'état d'un jeu de tennis.
 // RAPPEL DES RÈGLES DU TENNIS //
 Un jeu de tennis se joue comme suit :
 Première balle gagnante = 15 points Seconde balle gagnante = 30 points Troisième balle gagnante = 40 points
@@ -20,9 +20,8 @@ joueur sous forme d'une chaîne de caractères wins , un tableau de chaînes de 
 Résultat attendu :
 L'état actuel du jeu sous forme d'une chaîne de caractères :
 P1 0 - P2 0 (les joueurs dans l'ordre des paramètres) P1 15 - P2 30 15a (en cas d'égalité à 15) 30a (en cas d'égalité à 30) P2 WINS DEUCE P1 ADVANTAGE ...
-     */
 
-
+*/
     public static String computeGameState(String nameP1, String nameP2, String[] wins) {
         int scoreP1 = 0;
         int scoreP2 = 0;

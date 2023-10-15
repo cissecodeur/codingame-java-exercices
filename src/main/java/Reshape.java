@@ -14,16 +14,33 @@ reshape(2, "1 23 456")
 
     public static String reshape(int n, String str) {
         String strWithoutEspace=str.replace(" ", "");
-        String result="";
+        StringBuilder result= new StringBuilder();
         int compteur=0;
         for(int i=0;i<strWithoutEspace.length();i++){
             compteur++;
-            result+=strWithoutEspace.charAt(i);
+            result.append(strWithoutEspace.charAt(i));
             if(compteur==n){
                 compteur=0;
-                result+="\n";
+                result.append("\n");
             }
         }
-        return result;
+        return result.toString();
+    }
+
+    public static String reshape2(int n, String str) {
+
+        String resultWithoutSpace = str.replace(" ","");
+        StringBuilder results = new StringBuilder();
+
+        for(int i = 0 ; i < resultWithoutSpace.length();i++) {
+            results.append(resultWithoutSpace.charAt(i));
+            if((i + 1) % n == 0  &&  i < resultWithoutSpace.length() - 1 ) {
+                results.append(" ");
+            }
+
+        }
+
+        return results.toString();
+
     }
 }

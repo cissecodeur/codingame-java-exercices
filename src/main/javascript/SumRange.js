@@ -1,4 +1,3 @@
-public class SumRange {
 
 
     /*
@@ -9,16 +8,13 @@ public class SumRange {
     */
 
 
-    public static int sumRange(int[] ints) {
-        int sum = 0;
-        for (int num : ints) {
-            if (num >= 10 && num <= 100) {
-                sum += num;
-            }
+    const sumRange = (ints) => {
+       var sum = 0 ;
+        for(let num of ints){
+             if(num >= 10 && num <= 100){
+                 sum += num;
+             }
         }
+
         return sum;
     }
-
-
-
-}
