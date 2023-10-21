@@ -1,11 +1,6 @@
-import java.util.*;
-
-public class Sudoku {
-
 
     /*
-    User
-Resous moi ce probleme en java
+    Question:
 Vous devez vérifier si une grille de sudoku est correcte et indiquer où se trouve la première erreur trouvée.
 Un sudoku est constitué d'un tableau en 2 dimensions, de 9 cases par 9 cases. Chaque case contient un chiffre de 1 à 9.
 Toutes les cases du sudoku que vous avez en entrée sont déjà remplies.
@@ -24,44 +19,43 @@ Valeur de retour
 Mémoire RAM disponible : 512 Mo Durée maximum d'exécution : 1 second
      */
 
-        public static String checkSudoku(List<List<Integer>> sudoku) {
-            
-            // Vérifier chaque ligne
-            for (int i = 0; i < 9; i++) {
-                if (!isValid(sudoku.get(i))) {
-                    return "LINE " + i + " INVALID";
-                }
-            }
-
-            // Vérifier chaque colonne
-            for (int i = 0; i < 9; i++) {
-                List<Integer> col = new ArrayList<>();
-                for (int j = 0; j < 9; j++) {
-                    col.add(sudoku.get(j).get(i));
-                }
-                if (!isValid(col)) {
-                    return "COLUMN " + i + " INVALID";
-                }
-            }
-
-            // Vérifier chaque région 3x3
-            for (int i = 0; i < 9; i++) {
-                List<Integer> block = new ArrayList<>();
-                for (int j = 0; j < 3; j++) {
-                    for (int k = 0; k < 3; k++) {
-                        block.add(sudoku.get(3 * (i / 3) + j).get(3 * (i % 3) + k));
-                    }
-                }
-                if (!isValid(block)) {
-                    return "REGION " + i + " INVALID";
-                }
-            }
-
-            return "VALID";
+   function checkSudoku(sudoku) {
+      // Write your code here
+      function isSetInvalid(set){
+       const seen = new Set();
+      for(let num of set){
+        if(num === 0) continue
+        if(seen.has(num)) return true;
+        seen.add(num);
         }
+       return false;
+      }
+       // verify line
+       for (let i = 0 ; i<9;i++){
+        if(isSetInvalid(sudoku[i])) return `LINE ${i} INVALID`;
+       }
 
-        private static boolean isValid(List<Integer> section) {
-            Set<Integer> seen = new HashSet<>(section);
-            return seen.size() == 9 && !seen.contains(0);
+      // verify colomn
+     for (let i = 0 ; i < 9; i++){
+       const col = [];
+       for (let j = 0; j < 9; j++){
+         col.push(sudoku[i][j]);
+         }
+       if(isSetInvalid(col)) return `COLUMN ${i} INVALID`;
+      }
+
+     // verify regions
+      for (let i = 0 ; i < 3 ;i++){
+        for (let j = 0; j < 3; j++){
+         const region = [];
+          for(let x = 0; x < 3 ;x++){
+            for(let y = 0; y < 3 ; y++){
+               region.push(sudoku[i*3 +x][j*3 +y]);
+              }
+          }
+          if(isSetInvalid(region)) return `REGION ${i*3 +j} INVALID`;
         }
+      }
+     return 'VALID';
+    }
 }
