@@ -8,6 +8,6 @@ Rappel : factorial(n) = 1 * 2 * 3 * ... * n
 const factorial = (n) =>{
     if(n===0){
        return 1; // par convention factoriel 0 = 1
-    }
+     }
     return n * factorial(n-1);
 }
