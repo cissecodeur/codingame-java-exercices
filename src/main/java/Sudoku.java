@@ -28,7 +28,7 @@ Mémoire RAM disponible : 512 Mo Durée maximum d'exécution : 1 second
             
             // Vérifier chaque ligne
             for (int i = 0; i < 9; i++) {
-                if (!isValid(sudoku.get(i))) {
+                if (isValid(sudoku.get(i))) {
                     return "LINE " + i + " INVALID";
                 }
             }
@@ -63,5 +63,17 @@ Mémoire RAM disponible : 512 Mo Durée maximum d'exécution : 1 second
         private static boolean isValid(List<Integer> section) {
             Set<Integer> seen = new HashSet<>(section);
             return seen.size() == 9 && !seen.contains(0);
+        }
+
+        private static boolean isValid2(List<Integer> section){
+
+              Set<Integer> existInSeen = new HashSet<>();
+              for(int num : section){
+                  if(num == 0) continue;
+                  if(existInSeen.contains(num)) return true;
+                  existInSeen.add(num);
+              }
+
+            return false;
         }
 }

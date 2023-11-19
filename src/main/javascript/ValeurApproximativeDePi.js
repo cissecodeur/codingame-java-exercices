@@ -13,17 +13,17 @@ Chaque item de pts contient un point. Un point est représenté par un tableau c
 
  Methode Monte carlo
 */
-    const ValeurApproximativeDePi = (pts) =>{
-          var nombreInside = 0;
-           for(let i=0 ; i < pts.length;i++){
-                let x = pts[i][0];
-                let y = pts[i][1];
 
-                if((x*x) + (y*y) <= 1){
-                   nombreInside++;
-                }
-           }
+function approxPi(pts){
 
-           return (nombreInside/pts.length)*4;
+    let numberInside = 0;
+    for(let pt of pts){
+        let  x = pt[0]
+        let  y = pt[1]
+        if((x*x) + (y*y) <= 1){
+            numberInside ++;
+        }
+    }
 
-     }
+    return (numberInside/pts.length)*4
+}

@@ -23,7 +23,7 @@ Mémoire RAM disponible : 512 Mo Durée maximum d'exécution : 1 second
       // Write your code here
       function isSetInvalid(set){
        const seen = new Set();
-      for(let num of set){
+        for(let num of set){
         if(num === 0) continue
         if(seen.has(num)) return true;
         seen.add(num);
@@ -39,7 +39,7 @@ Mémoire RAM disponible : 512 Mo Durée maximum d'exécution : 1 second
      for (let i = 0 ; i < 9; i++){
        const col = [];
        for (let j = 0; j < 9; j++){
-         col.push(sudoku[i][j]);
+         col.push(sudoku[j][i]);
          }
        if(isSetInvalid(col)) return `COLUMN ${i} INVALID`;
       }
@@ -58,4 +58,4 @@ Mémoire RAM disponible : 512 Mo Durée maximum d'exécution : 1 second
       }
      return 'VALID';
     }
-}
+

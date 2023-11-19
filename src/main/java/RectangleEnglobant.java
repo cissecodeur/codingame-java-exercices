@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class RectangleEnglobant {
@@ -18,31 +19,45 @@ rectangleDefinition (List<Integer>) : Les coordonnées (x, y) du coin supérieur
 Mémoire RAM disponible : 512 Mo Durée maximum d'exécution : 1 second
      */
 
-    public List<Integer> boundingRectangle(List<List<Integer>> coordinatesPoints) {
-        if (coordinatesPoints == null || coordinatesPoints.isEmpty()) {
-            throw new IllegalArgumentException("La liste des coordonnées est vide.");
+    public static List<Integer> boundingRectangle(List<List<Integer>> coordinatesPoints) {
+
+        List<Integer>  finalList = new ArrayList<>();
+
+        // Je retourne la liste si le tableau est vide
+        if (coordinatesPoints.isEmpty()){
+            return finalList;
         }
 
-        int minX = Integer.MAX_VALUE;
-        int minY = Integer.MAX_VALUE;
-        int maxX = Integer.MIN_VALUE;
-        int maxY = Integer.MIN_VALUE;
+        // J'initialise les valeurs
+        int minX = coordinatesPoints.get(0).get(0);
+        int minY =  coordinatesPoints.get(0).get(1);
 
-        for (List<Integer> point : coordinatesPoints) {
-            int x = point.get(0);
-            int y = point.get(1);
+        int maxX = coordinatesPoints.get(0).get(0);
+        int maxY = coordinatesPoints.get(0).get(1);
 
-            minX = Math.min(minX, x);
-            minY = Math.min(minY, y);
-            maxX = Math.max(maxX, x);
-            maxY = Math.max(maxY, y);
+
+        for(List<Integer> coordinatePoint : coordinatesPoints){
+            // je compare les valeurs des abcisses et ordonnées a nos differentes valeurs
+            minX = Math.min(minX,coordinatePoint.get(0));
+            minY = Math.min(minY,coordinatePoint.get(1));
+
+            maxX = Math.max(maxX,coordinatePoint.get(0));
+            maxY = Math.max(maxY,coordinatePoint.get(1));
         }
 
-        int width = maxX - minX;
-        int height = maxY - minY;
+        // j'ajoute les valeurs au tableau final
+        finalList.add(minX);
+        finalList.add(minY);
+        finalList.add(maxX - minX);
+        finalList.add(maxY - minY);
 
-        return List.of(minX, minY, width, height);
+
+        return  finalList;
     }
+
+
+
+
 
 
 }

@@ -29,4 +29,17 @@ On a  1 <= number <= 100 .
         // Retourner la chaîne
         return result.toString();
     }
+
+
+    public String check(int i) {
+        String result = "";
+        if(i%3==0)  {
+            result = "Fizz";
+        }
+        if(i%5 ==0 ) {
+            result += "Buzz";
+        }
+        return result.length() > 0 ? result :String.valueOf(i);
+    }
 }
+
