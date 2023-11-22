@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class AchatDechemises {
 
 
@@ -74,6 +79,13 @@ Pour les entrées blueCosts = [100, 1, 76, 14] greenCosts = [22, 20, 1, 2] redCo
 
         return result;
     }
+
+
+
+
+
+
+
 
 
 }

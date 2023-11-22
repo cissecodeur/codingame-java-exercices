@@ -9,7 +9,7 @@
 
 */
   const computeClosestToZero = (temps) => {
-          if(temps.length == 0){
+          if(temps.length === 0){
               return 0
           }
 

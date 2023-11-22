@@ -6,6 +6,6 @@ date est toujours un objet Date défini.
 
 const nextWeek = (date) =>{
     let dateToReturn = new Date(date)
-    dateToReturn.setDate(date.getDate() + 7)
+    dateToReturn.setDate(dateToReturn.getDate() + 7)
     return dateToReturn;
 }

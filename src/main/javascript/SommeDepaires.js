@@ -16,29 +16,9 @@ Pour l'exemple ci-dessus, la sortie correcte serait : [1, 2] .
    */
 
 
-
-    public static int[] findSumPair(int[] numbers, int k) {
-        Map<Integer, Integer> numToIndex = new HashMap<>();  // HashMap pour stocker les indices des numéros déjà parcourus
-
-        for (int i = 0; i < numbers.length; i++) {
-            int num = numbers[i];
-            int complement = k - num;  // Le complément nécessaire pour obtenir la somme k
-
-            if (numToIndex.containsKey(complement)) {
-                return new int[]{numToIndex.get(complement), i};  // On a trouvé une paire dont la somme est k
-            } else {
-                numToIndex.put(num, i);  // Stocke l'indice du numéro actuel
-            }
-        }
-
-        return new int[]{0, 0};  // Aucune paire trouvée, on retourne {0, 0}
-    }
-
-}
-
 const findSumPair = (numbers,k) =>{
-       var mapTemp = new Map();
-       var result = [];
+       let mapTemp = new Map();
+       let result = [];
        for(let i=0 ; i < numbers.length;i++){
             let complement = k - numbers[i];
             if(mapTemp.has(complement)){// Utilisation de has pour vérifier si la clé existe

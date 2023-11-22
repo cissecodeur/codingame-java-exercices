@@ -1,4 +1,5 @@
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class Fizzbuzz {
 
@@ -41,5 +42,22 @@ On a  1 <= number <= 100 .
         }
         return result.length() > 0 ? result :String.valueOf(i);
     }
+
+
+    public static void fizBuz(int n){
+        IntStream.rangeClosed(0, n).mapToObj(i ->
+                        i % 3 == 0 ?
+                                (i % 5 == 0 ? "FizzBuzz" : "Fizz") :
+                                (i % 5 == 0 ? "Buzz" : i))
+                .forEach(System.out::println);
+
+
+    }
+
+        public static void   main(String args[]){
+            fizBuz(100);
+
+        }
+
 }
 

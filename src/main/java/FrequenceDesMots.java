@@ -24,14 +24,41 @@ Pour l'exemple ci-dessus, la sortie correcte serait :
             }
             else{
                 frequencies.put(word, 1);
-            } }
-        List<String> sorted = new ArrayList<>(frequencies.keySet());
-        Collections.sort(sorted);
-        int[] counts = new int[sorted.size()];
-        for(int i= 0; i<sorted.size(); i++){
-            counts[i] = frequencies.get(sorted.get(i));
+            }
+          }
+        List<String> sortedWords = new ArrayList<>(frequencies.keySet());
+        Collections.sort(sortedWords);
+
+        int[] counts = new int[sortedWords.size()];
+        int index = 0;
+        for(String word : sortedWords ){
+
+            counts[index ++] = frequencies.get(word);
         }
         return  counts;
+    }
+
+
+    public int[] frequenceDesMots(String[] words){
+
+        Map<String,Integer> mapFrequences = new HashMap<>();
+        for(String word : words ){
+            if(mapFrequences.containsKey(word)) {
+                mapFrequences.put(word,mapFrequences.get(word)+1);
+            }
+            else {
+                mapFrequences.put(word,1);
+            }
+        }
+
+        List<String> listKeysSorted =  new ArrayList<>(mapFrequences.keySet());
+        Collections.sort(listKeysSorted);
+        List<Integer> countsList = new ArrayList<>();
+        int[] counts = new int[listKeysSorted.size()];
+           for (int i = 0 ; i < listKeysSorted.size();i++){
+               counts[i] = mapFrequences.get((listKeysSorted.get(i)));
+           }
+        return counts;
     }
 
 }

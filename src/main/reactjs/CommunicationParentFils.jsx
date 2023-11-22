@@ -8,7 +8,6 @@ Avec le code actuel, les composants ne suivent pas le comportement attendu. Corr
 import React, { useState } from "react";
 
 function Child({ value, setValue }) {
-
     function handleChange(event) {
         setValue(event.target.value);
     }

@@ -29,3 +29,5 @@ const reshape = (n, str) => {
      }
     return results.join(""); // Convertir le tableau en chaîne
 }
+
+
