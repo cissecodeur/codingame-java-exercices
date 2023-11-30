@@ -1,12 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-public class DuoDigit {
 
     /*  Sujet :
     Question
@@ -34,4 +25,3 @@ public class DuoDigit {
          return "y" ;
     }
 
- }

@@ -6,7 +6,44 @@ un entier, qui démarre à zéro, dans un élément ayant l'ID value un bouton a
 Le composant actuel affiche uniquement 0 et les boutons sont inopérants.
 On vous demande de réparer les boutons : chaque clic augmente ou décrémente value de 1.
  */
-const Counter = () => {
+
+import React from 'react';
+
+class Counter extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            value: 0
+        };
+    }
+
+    // Méthode pour incrémenter la valeur
+    incrementValue = () => {
+        this.setState({
+            value: this.state.value + 1
+        });
+    }
+
+    // Méthode pour décrémenter la valeur
+    decrementValue = () => {
+        this.setState({
+            value: this.state.value - 1
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <p id="value">{this.state.value}</p>
+                <button id="increment" onClick={this.incrementValue}>+</button>
+                <button id="decrement" onClick={this.decrementValue}>-</button>
+            </div>
+        );
+    }
+}
+
+
+const CounterFunctionCompent = () => {
     const [count, setCount] = useState(0);
 
     const increment = () => {

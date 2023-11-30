@@ -19,25 +19,8 @@ Essayez d'optimiser votre solution pour que, dans l'idéal, la durée de traitem
         nombrePaire = (n*(n-1))/2;
          return nombrePaire;
     }
-/*
-Question
-Implémentez la fonction closestToZero() pour renvoyer l'entier le plus proche de zéro parmi un tableau numbers d'entiers donnés.
-S'il y a deux entiers tout aussi proches de zéro, considérez l'entier positif comme étant le plus proche de zéro (par exemple si numbers contient -5 et 5, retournez 5). Si numbers est null ou vide, retournez 0 (zero).
-Données : les entiers dans numbers ont des valeurs entières allant de -2147483647 à 2147483647.
- */
 
-const closestToZero = (numbers) => {
 
-    if (numbers.length === 0) return  0
-    let closestToZero = numbers[0];
-    for (let num of numbers){
-       if (Math.abs(num) <=  Math.abs(closestToZero)){
-           closestToZero = Math.abs(num)
-       }
-    }
-    return closestToZero;
-
-}
 
 
 

@@ -12,7 +12,6 @@ Chaque item de pts contient un point. Un point est représenté par un tableau c
  */
 
 
-
 public class ValeurApproximativeDePi {
 
     public  static double approx(double[][] pts){

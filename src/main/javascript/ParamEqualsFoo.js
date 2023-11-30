@@ -7,4 +7,4 @@
        const A = (param) =>{
               return param != null && param === 'foo';
           }
-}
+
