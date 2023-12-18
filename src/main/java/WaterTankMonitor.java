@@ -13,12 +13,11 @@ Corriger WaterTankMonitor en implémentant une solution élégante.
      */
 
     private final WaterTank tank; // water tank monitored
-    private final int capacity;
+    private int capacity;
     private int currentVolume = 0;
 
-    WaterTankMonitor(WaterTank tank, int capacity) {
+    WaterTankMonitor(WaterTank tank) {
         this.tank = tank;
-        this.capacity = capacity;
     }
 
     public synchronized void empty() throws InterruptedException {
